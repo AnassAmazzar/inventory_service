@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <title>Delete Video</title>
+  <link th:href="@{/css/styles.css}" rel="stylesheet">
+  <link th:href="@{/css/bootstrap.css}" rel="stylesheet">
+  <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+<form th:action="@{/deletevideo}" th:object="${video}" method="post">
+  <textset>
+    <legend>Forms Delete : You want to delete this Video ?</legend>
+    <div>
+      <input type="hidden" th:field="${video.id}" class="form-control" id="id" name="name" aria-describedby="name" placeholder="Enter name">
+    </div>
+    <div>
+      <label for="name" class="form-label mt-4">Name</label>
+      <p th:text="${video.name}" class="form-control" id="name" name="name" aria-describedby="name" ></p>
+    </div>
+    <div>
+      <label for="url" class="form-label mt-4">Url</label>
+      <p th:text="${video.url}" class="form-control" id="url" name="url" aria-describedby="url" ></p>
+    </div>
+    <div>
+      <label for="description" class="form-label mt-4">Description</label>
+      <p class="form-control" th:text="${video.description}" id="description" name="description"></p>
+    </div>
+    <div>
+      <label for="datePublication" class="form-label mt-4">Date</label>
+      <p th:text="${video.datePublication}" class="form-control" id="datePublication" name="datePublication"></p>
+    </div>
+    <div>
+      <label for="creator" class="form-label mt-4">Creator select</label>
+      <p class="form-select" th:text="${video.creator.getName()}" id="creator" name="creator">
+      </p>
+    </div>
+    <br>
+    <br>
+    <div class="d-flex">
+      <button type="submit" class="btn btn-info">Oui</button>
+      <a th:href="@{'/'}" type="button" class="btn btn-primary">Non</a>
+    </div>
+  </textset>
+</form>
+</body>
+</html>

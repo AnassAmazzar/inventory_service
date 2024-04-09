@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add Video</title>
+    <link th:href="@{/css/styles.css}" rel="stylesheet">
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+<form th:action="@{/addvideo}" th:object="${video}" method="post">
+    <fieldset>
+        <legend>Forms Add</legend>
+        <div>
+            <label for="name" class="form-label mt-4">Name</label>
+            <input type="text" class="form-control" id="name" name="name" aria-describedby="name" placeholder="Enter name">
+        </div>
+        <div>
+            <label for="url" class="form-label mt-4">Url</label>
+            <input type="url" class="form-control" id="url" name="url" aria-describedby="url" placeholder="Enter url">
+        </div>
+        <div>
+            <label for="description" class="form-label mt-4">Description</label>
+            <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+        </div>
+        <div>
+            <label for="datePublication" class="form-label mt-4">Date</label>
+            <input type="date" class="form-control" id="datePublication" name="datePublication" aria-describedby="datePublication" placeholder="Enter date">
+        </div>
+        <div>
+            <label for="creator" class="form-label mt-4">Creator select</label>
+            <select class="form-select" id="creator" name="creator">
+                <option th:each="creator : ${listNameCreator}" th:text="${creator.getName()}" th:value="${creator.getId()}"></option>
+            </select>
+        </div>
+        <br>
+        <br>
+        <div class="d-flex">
+            <button type="submit" class="btn btn-info">Add</button>
+            <a th:href="@{'/'}" type="button" class="btn btn-primary">Return</a>
+        </div>
+    </fieldset>
+</form>
+</body>
+</html>
